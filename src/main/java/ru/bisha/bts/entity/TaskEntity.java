@@ -1,5 +1,8 @@
 package ru.bisha.bts.entity;
 
+import lombok.Data;
+
+@Data
 public class TaskEntity {
 
     private int id;
