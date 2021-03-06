@@ -1,9 +1,9 @@
-user|Ivan|1
-user|Darya|2
-user|Igor|3
-project|bts|1
-project|calculator|2
-project|XO|3
+user|1|Ivan
+user|2|Darya
+user|3|Igor
+project|1|bts
+project|2|calculator
+project|3|XO
 task|1|1|bts is working to good|ISSUE|LOW|1|bts is working too good, im almost got blinded by its glory, fix it!
 task|2|2|equals is not equals|BUG|HIGH|2|Button equals is not working when i dont press it, is it normal?
 task|3|3|Make multiplayer|TASK|MEDIUM|3|It's time to implement multiplayer. Do it!
