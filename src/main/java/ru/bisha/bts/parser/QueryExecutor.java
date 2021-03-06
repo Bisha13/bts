@@ -1,12 +1,12 @@
-package ru.bisha.bts.fileParser;
+package ru.bisha.bts.parser;
 
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.bisha.bts.repo.ProjectInsertRepo;
 import ru.bisha.bts.repo.TaskInsertRepo;
 import ru.bisha.bts.repo.UserInsertRepo;
 
-import javax.transaction.Transactional;
 
 @Component
 public class QueryExecutor {

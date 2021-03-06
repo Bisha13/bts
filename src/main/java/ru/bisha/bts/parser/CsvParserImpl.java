@@ -1,19 +1,25 @@
-package ru.bisha.bts.fileParser;
+package ru.bisha.bts.parser;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
-
+/**
+ * Purpose of this file is to parse CSV file
+ * and via queryExecutor insert info to db.
+ */
 @Component
-public class FileParser {
+public final class CsvParserImpl implements FileParser {
 
     @Autowired
     private QueryExecutor queryExecutor;
 
     public static final String DELIMITER = "\\|";
 
-    public void parseFileToDB(String file) {
+    @Override
+    public void parseFileToDd(final String file) {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while (reader.ready()) {
@@ -23,12 +29,8 @@ public class FileParser {
 
             }
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }

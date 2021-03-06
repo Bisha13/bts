@@ -3,18 +3,21 @@ package ru.bisha.bts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.bisha.bts.fileParser.FileParser;
+import ru.bisha.bts.parser.CsvParserImpl;
 
+/**
+ * Controller for index page.
+ */
 @Controller
 @RequestMapping("/")
-public class IndexController {
+public final class IndexController {
 
     @Autowired
-    private FileParser parser;
+    private CsvParserImpl parser;
 
     @RequestMapping
     public String showIndex() {
-        parser.parseFileToDB("src/main/resources/test.csv");
+        parser.parseFileToDd("src/main/resources/test.csv");
         return "index";
     }
 }
