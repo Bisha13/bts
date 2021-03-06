@@ -13,7 +13,7 @@ public class FileParser {
 
     public static final String DELIMITER = "\\|";
 
-    public void parse(String file) {
+    public void parseFileToDB(String file) {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while (reader.ready()) {

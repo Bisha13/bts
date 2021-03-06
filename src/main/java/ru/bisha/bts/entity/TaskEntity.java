@@ -7,9 +7,9 @@ public class TaskEntity {
 
     private int id;
 
-    private ProjectEntity project;
-
     private String theme;
+
+    private ProjectEntity project;
 
     private Type type;
 
@@ -19,11 +19,11 @@ public class TaskEntity {
 
     private String description;
 
-    public static enum Type {
+    public enum Type {
         BUG, TASK, ISSUE
     }
 
-    public static enum Priority  {
+    public enum Priority  {
         LOW, MEDIUM, HIGH
     }
 }
