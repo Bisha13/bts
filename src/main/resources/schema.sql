@@ -10,7 +10,7 @@ CREATE TABLE projects (
                        name VARCHAR(250) NOT NULL
 );
 
-CREATE TABLE projects (
+CREATE TABLE tasks (
                           id INT AUTO_INCREMENT  PRIMARY KEY,
                           theme VARCHAR(250) NOT NULL,
                           project_id INT NOT NULL,
