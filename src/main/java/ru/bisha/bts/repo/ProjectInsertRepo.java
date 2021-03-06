@@ -7,16 +7,15 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 @Repository
-public class UserInsertRepo {
+public class ProjectInsertRepo {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Transactional
     public void insertWithQuery(final String[] parsedLine) {
-        entityManager.createNativeQuery("INSERT INTO users (name) VALUES (?)")
+        entityManager.createNativeQuery("INSERT INTO projects (name) VALUES (?)")
                 //.setParameter(1, parsedLine[1])
-                //.setParameter(2, parsedLine[2])
                 .setParameter(1, parsedLine[2])
                 .executeUpdate();
     }
