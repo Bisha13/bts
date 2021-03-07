@@ -17,5 +17,7 @@ CREATE TABLE tasks (
                           type VARCHAR(250),
                           priority VARCHAR(250),
                           executor_id INT NOT NULL,
-                          description TEXT
+                          description TEXT,
+                          foreign key (project_id) references projects(id),
+                          foreign key (executor_id) references users(id)
 );
