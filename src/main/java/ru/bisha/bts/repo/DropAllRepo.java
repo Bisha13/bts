@@ -3,37 +3,26 @@ package ru.bisha.bts.repo;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class DropAllRepo {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    @Autowired
+    private ProjectRepo projectRepo;
 
-    @Transactional
-    public void deleteFromTasks() {
-        entityManager.createNativeQuery("DELETE FROM tasks")
-                .executeUpdate();
+    @Autowired
+    private TaskRepo taskRepo;
 
-    }
+    @Autowired
+    private UserRepo userRepo;
 
-    @Transactional
-    public void deleteFromUsers() {
-        entityManager.createNativeQuery("DELETE FROM users")
-                .executeUpdate();
-    }
-
-    @Transactional
-    public void deleteFromProjects() {
-        entityManager.createNativeQuery("DELETE FROM projects")
-                .executeUpdate();
-    }
-
-    @Transactional
     public void deleteAllData() {
-        deleteFromTasks();
-        deleteFromUsers();
-        deleteFromProjects();
+        taskRepo.truncateMyTable();
+        projectRepo.truncateMyTable();
+        userRepo.truncateMyTable();
     }
+
 }
