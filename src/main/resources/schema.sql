@@ -5,10 +5,14 @@ CREATE TABLE users (
                               name VARCHAR(250) NOT NULL
 );
 
+DROP TABLE IF EXISTS projects;
+
 CREATE TABLE projects (
                        id INT AUTO_INCREMENT  PRIMARY KEY,
                        name VARCHAR(250) NOT NULL
 );
+
+DROP TABLE IF EXISTS tasks;
 
 CREATE TABLE tasks (
                           id INT AUTO_INCREMENT  PRIMARY KEY,
