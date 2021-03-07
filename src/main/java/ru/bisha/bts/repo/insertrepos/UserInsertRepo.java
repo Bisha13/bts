@@ -1,4 +1,4 @@
-package ru.bisha.bts.repo;
+package ru.bisha.bts.repo.insertrepos;
 
 import org.springframework.stereotype.Repository;
 
