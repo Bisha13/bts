@@ -1,6 +1,5 @@
 package ru.bisha.bts.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -26,7 +25,7 @@ public class TaskEntity {
     @Column(name = "theme")
     private String theme;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "project_id")
     private ProjectEntity project;
 
@@ -38,7 +37,7 @@ public class TaskEntity {
     @Enumerated(EnumType.STRING)
     private Priority priority;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "executor_id")
     private UserEntity executor;
 
