@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.bisha.bts.model.Project;
 import ru.bisha.bts.repo.PersistenceTest;
-import ru.bisha.bts.service.ProjectService;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProjectServiceTest extends PersistenceTest {
 
     @Autowired
-    ProjectService projectService;
+    ProjectSDJpaService projectService;
 
     @DisplayName("Test save and delete")
     @Test
