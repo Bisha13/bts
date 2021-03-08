@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.bisha.bts.entity.ProjectEntity;
+import ru.bisha.bts.model.ProjectEntity;
 import ru.bisha.bts.repo.ProjectRepo;
 import ru.bisha.bts.service.ProjectService;
 

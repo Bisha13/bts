@@ -1,4 +1,4 @@
-package ru.bisha.bts.entity;
+package ru.bisha.bts.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

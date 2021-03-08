@@ -3,7 +3,7 @@ package ru.bisha.bts.service.sdjpa;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.bisha.bts.entity.ProjectEntity;
+import ru.bisha.bts.model.ProjectEntity;
 import ru.bisha.bts.repo.PersistenceTest;
 import ru.bisha.bts.service.ProjectService;
 
