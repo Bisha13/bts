@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "users")
-public class UserEntity {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +25,6 @@ public class UserEntity {
     private String name;
 
     @OneToMany(mappedBy = "executor", cascade = CascadeType.ALL)
-    private List<TaskEntity> tasks;
+    private List<Task> tasks;
 
 }

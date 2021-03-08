@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.bisha.bts.model.UserEntity;
+import ru.bisha.bts.model.User;
 import ru.bisha.bts.repo.UserRepo;
 import ru.bisha.bts.service.UserService;
 
@@ -16,24 +16,24 @@ public class UserSDJpaService implements UserService {
     private UserRepo userRepo;
 
     @Override
-    public Set<UserEntity> findAll() {
-        Set<UserEntity> users = new HashSet<>();
+    public Set<User> findAll() {
+        Set<User> users = new HashSet<>();
         userRepo.findAll().forEach(users::add);
         return users;
     }
 
     @Override
-    public UserEntity findById(Integer id) {
+    public User findById(Integer id) {
         return userRepo.findById(id).orElse(null);
     }
 
     @Override
-    public UserEntity save(UserEntity object) {
+    public User save(User object) {
         return userRepo.save(object);
     }
 
     @Override
-    public void delete(UserEntity object) {
+    public void delete(User object) {
         userRepo.delete(object);
     }
 

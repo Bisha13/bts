@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "tasks")
-public class TaskEntity {
+public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +27,7 @@ public class TaskEntity {
 
     @ManyToOne
     @JoinColumn(name = "project_id")
-    private ProjectEntity project;
+    private Project project;
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
@@ -39,7 +39,7 @@ public class TaskEntity {
 
     @ManyToOne
     @JoinColumn(name = "executor_id")
-    private UserEntity executor;
+    private User executor;
 
     @Column(name = "description")
     private String description;

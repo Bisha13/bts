@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "projects")
-public class ProjectEntity {
+public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,5 +19,5 @@ public class ProjectEntity {
     private String name;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
-    private List<TaskEntity> tasks;
+    private List<Task> tasks;
 }

@@ -1,6 +1,6 @@
 package ru.bisha.bts.service;
 
-import ru.bisha.bts.model.UserEntity;
+import ru.bisha.bts.model.User;
 
-public interface UserService extends CrudService<UserEntity, Integer> {
+public interface UserService extends CrudService<User, Integer> {
 }

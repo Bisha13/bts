@@ -1,6 +1,6 @@
 package ru.bisha.bts.service;
 
-import ru.bisha.bts.model.TaskEntity;
+import ru.bisha.bts.model.Task;
 
-public interface TaskService extends CrudService<TaskEntity, Integer> {
+public interface TaskService extends CrudService<Task, Integer> {
 }

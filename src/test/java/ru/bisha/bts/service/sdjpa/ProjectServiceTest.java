@@ -3,7 +3,7 @@ package ru.bisha.bts.service.sdjpa;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.bisha.bts.model.ProjectEntity;
+import ru.bisha.bts.model.Project;
 import ru.bisha.bts.repo.PersistenceTest;
 import ru.bisha.bts.service.ProjectService;
 
@@ -18,10 +18,10 @@ class ProjectServiceTest extends PersistenceTest {
     @DisplayName("Test save and delete")
     @Test
     void delete() {
-        ProjectEntity project = new ProjectEntity();
+        Project project = new Project();
         project.setName("Test Project");
         int sizeBefore = projectService.findAll().size();
-        ProjectEntity testProject = projectService.save(project);
+        Project testProject = projectService.save(project);
         assertEquals(testProject.getName(), project.getName());
         int sizeAfter = projectService.findAll().size();
         assertEquals(sizeBefore + 1, sizeAfter);
@@ -40,7 +40,7 @@ class ProjectServiceTest extends PersistenceTest {
         assertEquals(sizeBefore -1, sizeAfter,
                 "Assert size after deletion");
 
-        ProjectEntity project = projectService.findById(1);
+        Project project = projectService.findById(1);
         assertNull(project);
     }
 }
