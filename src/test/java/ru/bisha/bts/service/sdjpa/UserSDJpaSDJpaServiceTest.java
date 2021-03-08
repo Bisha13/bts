@@ -1,15 +1,71 @@
 package ru.bisha.bts.service.sdjpa;
 
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.bisha.bts.model.User;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+@Slf4j
 class UserSDJpaSDJpaServiceTest extends PersistenceTest {
 
     @Autowired
     UserSDJpaService userService;
 
+    @DisplayName("Test findAll + save")
     @Test
     void findAll() {
+
+        Set<User> userBefore = userService.findAll();
+        int size = userBefore.size();
+
+        Set<String> expected = new HashSet<>();
+        expected.add("1|Ivan");
+        expected.add("2|Darya");
+        expected.add("3|Igor");
+
+        Set<String> actual = userBefore
+                .stream()
+                .map(u -> u.getId() + "|" + u.getName())
+                .collect(Collectors.toSet());
+
+        assertEquals(expected, actual);
+
+        User user1 = new User();
+        user1.setName("Name1");
+        User user2 = new User();
+        user2.setName("Name2");
+        User user3 = new User();
+        user3.setName("Name3");
+        userService.save(user1);
+        userService.save(user2);
+        userService.save(user3);
+
+        assertNotEquals(0, userBefore.size());
+        Set<User> usersAfter = userService.findAll();
+
+        expected.add("4|Name1");
+        expected.add("5|Name2");
+        expected.add("6|Name3");
+
+        Set<String> actual2 = usersAfter
+                .stream()
+                .map(u -> u.getId() + "|" + u.getName())
+                .collect(Collectors.toSet());
+
+        assertEquals(expected, actual2);
+
+        int sizeAfter = usersAfter.size();
+        assertEquals(size + 3,  sizeAfter);
+
 
     }
 
