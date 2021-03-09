@@ -1,6 +1,7 @@
 package ru.bisha.bts.parser;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public final class CsvParserImpl implements FileParser {
     public static final String DELIMITER = "\\|";
 
     @Override
-    public void parseFileToDd(final String file) {
+    public void parseFileToDd(final File file) {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while (reader.ready()) {

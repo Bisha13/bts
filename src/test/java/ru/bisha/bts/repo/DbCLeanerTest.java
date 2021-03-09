@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.bisha.bts.parser.FileParser;
 
+import java.io.File;
+
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @SpringBootTest
@@ -23,7 +25,7 @@ class DbCLeanerTest {
 
     @BeforeEach
     void setUp() {
-        fileParser.parseFileToDd(TEST_CSV);
+        fileParser.parseFileToDd(new File(TEST_CSV));
     }
 
     @DisplayName("Test multiple cleaning of db")

@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import ru.bisha.bts.parser.FileParser;
 import ru.bisha.bts.repo.DbCLeaner;
 
+import java.io.File;
+
 @Tag("persistence")
 @SpringBootTest
 public abstract class PersistenceTest {
@@ -23,7 +25,7 @@ public abstract class PersistenceTest {
     @BeforeEach
     void before() {
         dbCLeaner.deleteAllData();
-        fileParser.parseFileToDd(TEST_CSV);
+        fileParser.parseFileToDd(new File(TEST_CSV));
     }
 
 }
