@@ -1,4 +1,4 @@
-package ru.bisha.bts.model;
+package ru.bisha.bts.model.entity;
 
 import java.util.List;
 import javax.persistence.CascadeType;

@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.bisha.bts.model.Task;
+import ru.bisha.bts.model.entity.Task;
 import ru.bisha.bts.repo.TaskRepo;
 import ru.bisha.bts.service.TaskService;
 

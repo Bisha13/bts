@@ -1,12 +1,10 @@
 package ru.bisha.bts.service.sdjpa;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.bisha.bts.model.Project;
-import ru.bisha.bts.model.Task;
-import ru.bisha.bts.model.User;
+import ru.bisha.bts.model.entity.Project;
+import ru.bisha.bts.model.entity.Task;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;

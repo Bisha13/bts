@@ -1,13 +1,12 @@
 package ru.bisha.bts.service.sdjpa;
 
-import org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import ru.bisha.bts.model.Project;
-import ru.bisha.bts.model.Task;
-import ru.bisha.bts.model.User;
+import ru.bisha.bts.model.entity.Project;
+import ru.bisha.bts.model.entity.Task;
+import ru.bisha.bts.model.entity.User;
 
 import java.util.HashSet;
 import java.util.Set;

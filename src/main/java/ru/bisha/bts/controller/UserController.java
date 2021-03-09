@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.bisha.bts.model.User;
+import ru.bisha.bts.model.entity.User;
 import ru.bisha.bts.service.UserService;
 
 import java.util.Set;

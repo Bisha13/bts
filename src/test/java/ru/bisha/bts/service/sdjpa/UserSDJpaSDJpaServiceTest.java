@@ -1,13 +1,11 @@
 package ru.bisha.bts.service.sdjpa;
 
-import lombok.extern.log4j.Log4j;
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.bisha.bts.model.Task;
-import ru.bisha.bts.model.User;
+import ru.bisha.bts.model.entity.Task;
+import ru.bisha.bts.model.entity.User;
 
 import javax.transaction.Transactional;
 

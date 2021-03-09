@@ -36,6 +36,7 @@ public class DbFileController {
     public String loadFile(@ModelAttribute(value = "resourceDto") final ResourceDto resourceDto)
             throws IOException {
         fileParser.parseFileToDd(resourceDto.getResource().getFile());
+        //todo handle exception
         return "index";
     }
 }
