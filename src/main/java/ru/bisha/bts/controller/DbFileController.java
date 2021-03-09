@@ -1,6 +1,5 @@
 package ru.bisha.bts.controller;
 
-import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.bisha.bts.model.dto.ResourceDto;
 import ru.bisha.bts.parser.FileParser;
 import ru.bisha.bts.parser.ResourceProvider;
-
+import ru.bisha.bts.repo.DbCLeaner;
 
 
 @Controller
@@ -24,6 +23,9 @@ public class DbFileController {
     @Autowired
     private FileParser fileParser;
 
+    @Autowired
+    DbCLeaner dbCLeaner;
+
     @RequestMapping
     public String chooseFile(final Model model) {
         Resource[] resources = resourceProvider.getResources();
@@ -33,10 +35,9 @@ public class DbFileController {
     }
 
     @PostMapping("/loadFile")
-    public String loadFile(@ModelAttribute(value = "resourceDto") final ResourceDto resourceDto)
-            throws IOException {
-        fileParser.parseFileToDd(resourceDto.getResource().getFile());
-        //todo handle exception
+    public String loadFile(@ModelAttribute(value = "resourceDto") final ResourceDto resourceDto) {
+        dbCLeaner.deleteAllData();
+        fileParser.parseFileToDd(resourceDto.getResource());
         return "index";
     }
 }
