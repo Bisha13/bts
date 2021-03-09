@@ -8,6 +8,8 @@ import ru.bisha.bts.model.Project;
 import ru.bisha.bts.repo.ProjectRepo;
 import ru.bisha.bts.service.ProjectService;
 
+import javax.transaction.Transactional;
+
 @Service
 public class ProjectSDJpaService implements ProjectService {
 
@@ -21,6 +23,7 @@ public class ProjectSDJpaService implements ProjectService {
         return projects;
     }
 
+    @Transactional
     @Override
     public Project findById(Integer id) {
         return projectRepo.findById(id).orElse(null);
