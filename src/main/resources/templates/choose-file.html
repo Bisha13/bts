@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Choose file</title>
+</head>
+<body>
+<h1>Choose file to load</h1>
+<form th:action="@{/loadFile}" th:object="${resourceDto}" method="post">
+    <select th:field="*{resource}">
+        <option th:each="resource : ${resourcesAtr}"
+                th:text="${resource.getFilename()}"
+                th:value="${resource.getFilename()}"
+        ></option>
+    </select>
+    <input type="submit" value="Load"/>
+</form>
+</body>
+</html>
