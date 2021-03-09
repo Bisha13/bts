@@ -8,6 +8,8 @@ import ru.bisha.bts.model.Task;
 import ru.bisha.bts.repo.TaskRepo;
 import ru.bisha.bts.service.TaskService;
 
+import javax.transaction.Transactional;
+
 @Service
 public class TaskSDJpaService implements TaskService {
 
@@ -21,6 +23,7 @@ public class TaskSDJpaService implements TaskService {
         return tasks;
     }
 
+    @Transactional
     @Override
     public Task findById(Integer id) {
         return taskRepo.findById(id).orElse(null);
