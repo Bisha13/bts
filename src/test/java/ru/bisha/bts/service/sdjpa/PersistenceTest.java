@@ -25,7 +25,7 @@ public abstract class PersistenceTest {
     @BeforeEach
     void before() {
         dbCLeaner.deleteAllData();
-        fileParser.parseFileToDd(new File(TEST_CSV));
+        fileParser.parseFileToDd(TEST_CSV);
     }
 
 }

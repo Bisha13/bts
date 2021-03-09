@@ -25,7 +25,7 @@ class DbCLeanerTest {
 
     @BeforeEach
     void setUp() {
-        fileParser.parseFileToDd(new File(TEST_CSV));
+        fileParser.parseFileToDd(TEST_CSV);
     }
 
     @DisplayName("Test multiple cleaning of db")
