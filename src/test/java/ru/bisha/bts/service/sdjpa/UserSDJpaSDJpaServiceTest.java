@@ -6,11 +6,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.bisha.bts.model.Task;
 import ru.bisha.bts.model.User;
+
+import javax.transaction.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -19,6 +24,9 @@ class UserSDJpaSDJpaServiceTest extends PersistenceTest {
 
     @Autowired
     UserSDJpaService userService;
+
+    @Autowired
+    TaskSDJpaService taskService;
 
     @DisplayName("Test findAll + save")
     @Test
@@ -69,19 +77,19 @@ class UserSDJpaSDJpaServiceTest extends PersistenceTest {
 
     }
 
+    @Transactional // I dont like it here ether.
+    @DisplayName("Test find all tasks of the user")
     @Test
-    void findById() {
+    void findTasksOfUser() {
+        List<Task> expectedTaskForId1 = new ArrayList<>();
+
+        //There are tasks 1 and 5 in test.csv for user id 1.
+        expectedTaskForId1.add(taskService.findById(1));
+        expectedTaskForId1.add(taskService.findById(5));
+
+        List<Task> actualListForId1
+                = userService.findById(1).getTasks();
+        assertEquals(expectedTaskForId1, actualListForId1);
     }
 
-    @Test
-    void save() {
-    }
-
-    @Test
-    void delete() {
-    }
-
-    @Test
-    void deleteById() {
-    }
 }
