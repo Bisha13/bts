@@ -1,12 +1,17 @@
 package ru.bisha.bts.service.sdjpa;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.bisha.bts.model.Project;
+import ru.bisha.bts.model.Task;
 import ru.bisha.bts.model.User;
 
+import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -17,6 +22,9 @@ class ProjectSDJpaServiceTest extends PersistenceTest {
 
     @Autowired
     ProjectSDJpaService projectService;
+
+    @Autowired
+    TaskSDJpaService taskService;
 
     @DisplayName("Test findAll + save")
     @Test
@@ -66,7 +74,7 @@ class ProjectSDJpaServiceTest extends PersistenceTest {
 
     }
 
-    @DisplayName("Test save and delete")
+    @DisplayName("Test save + delete")
     @Test
     void delete() {
         Project project = new Project();
@@ -81,7 +89,7 @@ class ProjectSDJpaServiceTest extends PersistenceTest {
         assertNull(projectService.findById(testProject.getId()));
     }
 
-    @DisplayName("Test deleteById and findById")
+    @DisplayName("Test deleteById + findById")
     @Test
     void deleteById() {
         int sizeBefore = projectService.findAll().size();
@@ -93,5 +101,21 @@ class ProjectSDJpaServiceTest extends PersistenceTest {
 
         Project project = projectService.findById(1);
         assertNull(project);
+    }
+
+
+    @Transactional // I DON'T like it here, but for now i cant find better way to do it.
+    @DisplayName("Test get all tasks in project")
+    @Test
+    void testGetAllTasks() {
+        List<Task> expectedTaskForId1 = new ArrayList<>();
+
+        //There are tasks 1 and 5 in test.csv for project id 1.
+        expectedTaskForId1.add(taskService.findById(1));
+        expectedTaskForId1.add(taskService.findById(5));
+
+        List<Task> actualListForId1
+                = projectService.findById(1).getTasks();
+        assertEquals(expectedTaskForId1, actualListForId1);
     }
 }
