@@ -22,12 +22,16 @@
     Type
     <select name="type">
         <option th:each="type : ${T(ru.bisha.bts.model.entity.Task$Type).values()}"
-                th:value="${type}" th:text="${type}"></option>
+                th:value="${type}"
+                th:text="${type}"
+                th:selected="*{type}"></option>
     </select><br><br>
     Priority
     <select name="Priority">
         <option th:each="type : ${T(ru.bisha.bts.model.entity.Task$Priority).values()}"
-                th:value="${type}" th:text="${type}"></option>
+                th:value="${type}"
+                th:text="${type}"
+                th:selected="*{type}"></option>
     </select><br><br>
     Executor
     <select th:field="*{executor}">

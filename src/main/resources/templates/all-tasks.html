@@ -8,8 +8,8 @@
     <title>All Tasks</title>
 </head>
 <body>
-<ul th:each="task : ${tasksAtr}">
-    <li th:text="
+<div th:each="task : ${tasksAtr}">
+    <span th:text="
                  'Id - '
                  + ${task.id}
                  + '| Theme - '
@@ -23,7 +23,10 @@
                  + '| Executor - '
                  + ${task.executor.name}
                  + '| Description - '
-                 + ${task.description}"></li>
-</ul>
+                 + ${task.description}"></span>
+    <form th:action="@{/tasks/update}" >
+        <button type="submit" th:value="${task.id}" th:name="taskId">Update</button>
+    </form>
+</div>
 </body>
 </html>

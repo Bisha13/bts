@@ -84,6 +84,27 @@ public class TaskController {
         return "task-info";
     }
 
+    @GetMapping("/update")
+    public String updateUser(@RequestParam(value = "taskId") final int taskId, final Model model) {
+        Task task = taskService.findById(taskId);
+
+        List<ProjectDto> projects = projectService.findAll()
+                .stream()
+                .map(dtoMapService::mapToDto)
+                .collect(Collectors.toList());
+
+        List<UserDto> users = userService.findAll()
+                .stream()
+                .map(dtoMapService::mapToDto)
+                .collect(Collectors.toList());
+
+        TaskDto taskDto = dtoMapService.mapToDto(task);
+        model.addAttribute("usersAtr", users);
+        model.addAttribute("projectsAtr", projects);
+        model.addAttribute("taskAtr", taskDto);
+        return "task-info";
+    }
+
     @PostMapping
     public String processNewTask(@ModelAttribute final TaskDto taskDto) {
         Task task = dtoMapService.mapToEntity(taskDto);
