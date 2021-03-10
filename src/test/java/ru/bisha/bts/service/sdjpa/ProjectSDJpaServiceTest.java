@@ -28,7 +28,7 @@ class ProjectSDJpaServiceTest extends PersistenceTest {
     @Test
     void findAll() {
 
-        Set<Project> projectBefore = projectService.findAll();
+        List<Project> projectBefore = projectService.findAll();
         int size = projectBefore.size();
 
         Set<String> expected = new HashSet<>();
@@ -54,7 +54,7 @@ class ProjectSDJpaServiceTest extends PersistenceTest {
         projectService.save(project3);
 
         assertNotEquals(0, projectBefore.size());
-        Set<Project> projectsAfter = projectService.findAll();
+        List<Project> projectsAfter = projectService.findAll();
 
         expected.add("4|Name1");
         expected.add("5|Name2");

@@ -1,7 +1,7 @@
 package ru.bisha.bts.service.sdjpa;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.bisha.bts.model.entity.Task;
@@ -17,8 +17,8 @@ public class TaskSDJpaService implements TaskService {
     private TaskRepo taskRepo;
 
     @Override
-    public Set<Task> findAll() {
-        Set<Task> tasks = new HashSet<>();
+    public List<Task> findAll() {
+        List<Task> tasks = new ArrayList<>();
         taskRepo.findAll().forEach(tasks::add);
         return tasks;
     }

@@ -1,10 +1,10 @@
 package ru.bisha.bts.service;
 
-import java.util.Set;
+import java.util.List;
 
 public interface CrudService<T,  I> {
 
-    Set<T> findAll();
+    List<T> findAll();
 
     T findById(I id);
 

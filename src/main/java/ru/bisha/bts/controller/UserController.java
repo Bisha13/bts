@@ -1,6 +1,6 @@
 package ru.bisha.bts.controller;
 
-import java.util.Set;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +22,7 @@ public class UserController {
 
     @GetMapping
     public String showUsers(final Model model) {
-        Set<User> users = userService.findAll();
+        List<User> users = userService.findAll();
         model.addAttribute("usersAtr", users);
         return "all-users";
     }

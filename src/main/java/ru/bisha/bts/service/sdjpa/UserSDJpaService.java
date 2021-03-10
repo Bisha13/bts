@@ -1,7 +1,7 @@
 package ru.bisha.bts.service.sdjpa;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.bisha.bts.model.entity.User;
@@ -16,8 +16,8 @@ public class UserSDJpaService implements UserService {
     private UserRepo userRepo;
 
     @Override
-    public Set<User> findAll() {
-        Set<User> users = new HashSet<>();
+    public List<User> findAll() {
+        List<User> users = new ArrayList<>();
         userRepo.findAll().forEach(users::add);
         return users;
     }

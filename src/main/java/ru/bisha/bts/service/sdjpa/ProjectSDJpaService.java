@@ -1,13 +1,12 @@
 package ru.bisha.bts.service.sdjpa;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.bisha.bts.model.entity.Project;
 import ru.bisha.bts.repo.ProjectRepo;
 import ru.bisha.bts.service.ProjectService;
-
 import javax.transaction.Transactional;
 
 @Service
@@ -17,8 +16,8 @@ public class ProjectSDJpaService implements ProjectService {
     private ProjectRepo projectRepo;
 
     @Override
-    public Set<Project> findAll() {
-        Set<Project> projects = new HashSet<>();
+    public List<Project> findAll() {
+        List<Project> projects = new ArrayList<>();
         projectRepo.findAll().forEach(projects::add);
         return projects;
     }

@@ -1,7 +1,6 @@
 package ru.bisha.bts.controller;
 
 import java.util.List;
-import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +34,7 @@ public class TaskController {
 
     @GetMapping
     public String showTasks(final Model model) {
-        Set<Task> tasks = taskService.findAll();
+        List<Task> tasks = taskService.findAll();
         model.addAttribute(TASKS_ATR, tasks);
         return ALL_TASKS;
     }

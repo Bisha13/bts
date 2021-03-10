@@ -30,7 +30,7 @@ class UserSDJpaSDJpaServiceTest extends PersistenceTest {
     @Test
     void findAll() {
 
-        Set<User> userBefore = userService.findAll();
+        List<User> userBefore = userService.findAll();
         int size = userBefore.size();
 
         Set<String> expected = new HashSet<>();
@@ -56,7 +56,7 @@ class UserSDJpaSDJpaServiceTest extends PersistenceTest {
         userService.save(user3);
 
         assertNotEquals(0, userBefore.size());
-        Set<User> usersAfter = userService.findAll();
+        List<User> usersAfter = userService.findAll();
 
         expected.add("4|Name1");
         expected.add("5|Name2");

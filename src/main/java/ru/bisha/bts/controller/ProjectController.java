@@ -1,6 +1,6 @@
 package ru.bisha.bts.controller;
 
-import java.util.Set;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +26,7 @@ public class ProjectController {
 
     @GetMapping
     public String showAllProjects(final Model model) {
-        Set<Project> projects = projectService.findAll();
+        List<Project> projects = projectService.findAll();
         model.addAttribute("projectsAtr", projects);
         return "all-projects";
     }

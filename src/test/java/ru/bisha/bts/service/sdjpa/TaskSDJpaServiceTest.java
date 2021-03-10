@@ -9,6 +9,7 @@ import ru.bisha.bts.model.entity.Task;
 import ru.bisha.bts.model.entity.User;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -30,7 +31,7 @@ class TaskSDJpaServiceTest extends PersistenceTest {
     @Test
     void findAll() {
 
-        Set<Task> taskBefore = taskService.findAll();
+        List<Task> taskBefore = taskService.findAll();
         int size = taskBefore.size();
 
         Set<String> expected = new HashSet<>();
@@ -71,7 +72,7 @@ class TaskSDJpaServiceTest extends PersistenceTest {
         taskService.save(task3);
 
         assertNotEquals(0, taskBefore.size());
-        Set<Task> tasksAfter = taskService.findAll();
+        List<Task> tasksAfter = taskService.findAll();
 
         expected.add("6|Theme1");
         expected.add("7|Theme2");
