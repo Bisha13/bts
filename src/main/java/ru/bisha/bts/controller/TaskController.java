@@ -111,4 +111,10 @@ public class TaskController {
         taskService.save(task);
         return "redirect:/tasks";
     }
+
+    @RequestMapping("/delete")
+    public String deleteTask(@RequestParam(value = "taskId") final int taskId) {
+        taskService.deleteById(taskId);
+        return "redirect:/tasks";//todo redirect to tasks of specific user
+    }
 }
