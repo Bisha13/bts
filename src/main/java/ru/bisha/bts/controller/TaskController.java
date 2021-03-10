@@ -1,18 +1,22 @@
 package ru.bisha.bts.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import ru.bisha.bts.model.dto.ProjectDto;
+import ru.bisha.bts.model.dto.TaskDto;
+import ru.bisha.bts.model.dto.UserDto;
 import ru.bisha.bts.model.entity.Project;
 import ru.bisha.bts.model.entity.Task;
 import ru.bisha.bts.model.entity.User;
 import ru.bisha.bts.service.ProjectService;
 import ru.bisha.bts.service.TaskService;
 import ru.bisha.bts.service.UserService;
+import ru.bisha.bts.service.map.DtoMapService;
 
 
 @Controller
@@ -27,6 +31,9 @@ public class TaskController {
 
     @Autowired
     private ProjectService projectService;
+
+    @Autowired
+    private DtoMapService dtoMapService;
 
     public static final String TASKS_ATR = "tasksAtr";
 
@@ -55,5 +62,32 @@ public class TaskController {
         List<Task> tasks = project.getTasks();
         model.addAttribute(TASKS_ATR, tasks);
         return ALL_TASKS;
+    }
+
+    @GetMapping("/new")
+    public String addNewTask(final Model model) {
+        TaskDto newTask = new TaskDto();
+
+        List<ProjectDto> projects = projectService.findAll()
+                .stream()
+                .map(dtoMapService::mapToDto)
+                .collect(Collectors.toList());
+
+        List<UserDto> users = userService.findAll()
+                .stream()
+                .map(dtoMapService::mapToDto)
+                .collect(Collectors.toList());
+
+        model.addAttribute("taskAtr", newTask);
+        model.addAttribute("projectsAtr", projects);
+        model.addAttribute("usersAtr", users);
+        return "task-info";
+    }
+
+    @PostMapping
+    public String processNewTask(@ModelAttribute final TaskDto taskDto) {
+        Task task = dtoMapService.mapToEntity(taskDto);
+        taskService.save(task);
+        return "redirect:/tasks";
     }
 }

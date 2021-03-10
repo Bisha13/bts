@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task info</title>
+</head>
+<body>
+<form th:action="@{/tasks}" method="post" th:object="${taskAtr}">
+    <input type="hidden" th:field="*{id}">
+    Theme
+    <input type="text" th:field="*{theme}"><br><br>
+    Project
+    <select th:field="*{project}">
+        <option th:each="project : ${projectsAtr}"
+                th:text="${project.name}"
+                th:value="${project.id}"
+        ></option>
+    </select><br><br>
+    Type
+    <select name="type">
+        <option th:each="type : ${T(ru.bisha.bts.model.entity.Task$Type).values()}"
+                th:value="${type}" th:text="${type}"></option>
+    </select><br><br>
+    Priority
+    <select name="Priority">
+        <option th:each="type : ${T(ru.bisha.bts.model.entity.Task$Priority).values()}"
+                th:value="${type}" th:text="${type}"></option>
+    </select><br><br>
+    Executor
+    <select th:field="*{executor}">
+        <option th:each="user : ${usersAtr}"
+                th:text="${user.name}"
+                th:value="${user.id}"
+        ></option>
+    </select><br><br>
+    Description
+    <textarea th:type="text" th:field="*{description}"></textarea>
+    <input type="submit" value="Save">
+</form>
+
+</body>
+</html>
