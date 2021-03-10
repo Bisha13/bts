@@ -52,4 +52,10 @@ public class UserController {
         userService.save(user);
         return "redirect:/users";
     }
+
+    @RequestMapping("/delete")
+    public String deleteUser(@RequestParam(value = "userId") final int userId) {
+        userService.deleteById(userId);
+        return "redirect:/users";
+    }
 }

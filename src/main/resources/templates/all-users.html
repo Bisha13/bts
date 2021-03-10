@@ -17,6 +17,9 @@
     <form th:action="@{/users/update}" >
         <button type="submit" th:value="${user.id}" th:name="userId">Update</button>
     </form>
+    <form th:action="@{/users/delete}" >
+        <button type="submit" th:value="${user.id}" th:name="userId">Delete</button>
+    </form>
 </div>
 
 <form th:action="@{/users/new}" method="get">
