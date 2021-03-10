@@ -10,11 +10,13 @@
 <body>
 
 <div th:each="project : ${projectsAtr}">
+
     <span th:text="'Id - ' + ${project.id}  + '| Name - ' + ${project.name}"></span>
     <a th:href="@{/tasks/from-project/(projectId=${project.id})}">Show all tasks</a>
-    <!--    <form th:action="@{/tasks/from-project}" >-->
-    <!--        <button type="submit" th:value="${project.id}" th:name="projectId">Show all tasks</button>-->
-    <!--    </form>-->
+
+    <form th:action="@{/projects/update}" >
+        <button type="submit" th:value="${project.id}" th:name="projectId">Update</button>
+    </form>
 </div>
 
 <form th:action="@{/projects/new}" method="get">

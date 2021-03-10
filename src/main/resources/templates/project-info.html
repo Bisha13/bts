@@ -9,6 +9,7 @@
 </head>
 <body>
 <form th:action="@{/projects}" method="post" th:object="${projectAtr}">
+    <input type="hidden" th:field="*{id}">
     Choose name for your project <input  type="text" th:field="*{name}">
     <input type="submit" value="Save">
 </form>
