@@ -2,30 +2,26 @@ package ru.bisha.bts.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import ru.bisha.bts.model.entity.Task;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class TaskDto {
 
     private int id;
 
     private String theme;
 
-    private ProjectDto project;
+    private int project;
 
-    private Type type;
+    private Task.Type type;
 
-    private Priority priority;
+    private Task.Priority priority;
 
-    private UserDto executor;
+    private int executor;
 
     private String description;
 
-    public enum Type {
-        BUG, TASK, ISSUE
-    }
-
-    public enum Priority {
-        LOW, MEDIUM, HIGH
-    }
 }

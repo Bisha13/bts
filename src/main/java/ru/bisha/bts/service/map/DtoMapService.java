@@ -23,10 +23,10 @@ public class DtoMapService {
         return new TaskDto(
                 task.getId(),
                 task.getTheme(),
-                mapToDto(task.getProject()),
-                TaskDto.Type.valueOf(task.getType().name()),
-                TaskDto.Priority.valueOf(task.getPriority().name()),
-                mapToDto(task.getExecutor()),
+                task.getProject().getId(),
+                task.getType(),
+                task.getPriority(),
+                task.getExecutor().getId(),
                 task.getDescription()
                 );
     }
