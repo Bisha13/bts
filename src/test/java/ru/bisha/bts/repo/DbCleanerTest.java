@@ -7,12 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.bisha.bts.parser.FileParser;
 
-import java.io.File;
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @SpringBootTest
-class DbCLeanerTest {
+class DbCleanerTest {
 
     public static final String TEST_CSV = "src/test/resources/test.csv";
 
@@ -20,7 +18,7 @@ class DbCLeanerTest {
     FileParser fileParser;
 
     @Autowired
-    DbCLeaner dbCLeaner;
+    DbCleaner dbCLeaner;
 
 
     @BeforeEach

@@ -7,7 +7,7 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class DbCLeaner {
+public class DbCleaner {
 
     public static final String REPOPULATE_SQL = "repopulate.sql";
 
