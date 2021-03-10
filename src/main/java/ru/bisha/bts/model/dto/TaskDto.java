@@ -11,13 +11,13 @@ public class TaskDto {
 
     private String theme;
 
-    private String project;
+    private ProjectDto project;
 
     private Type type;
 
     private Priority priority;
 
-    private String executor;
+    private UserDto executor;
 
     private String description;
 

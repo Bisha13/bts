@@ -89,13 +89,13 @@ class DtoMapServiceTest {
                 () -> assertEquals(task.getTheme(),
                         taskDto.getTheme(), "Theme does not match"),
                 () -> assertEquals(task.getProject().
-                        getName(), taskDto.getProject(), "Project names does not match"),
+                        getName(), taskDto.getProject().getName(), "Project names does not match"),
                 () -> assertEquals(task.getType().name(),
                         taskDto.getType().name(), "Type does not match"),
                 () -> assertEquals(task.getPriority().name(),
                         taskDto.getPriority().name(), "Priority does not match"),
                 () -> assertEquals(task.getExecutor().getName(),
-                        taskDto.getExecutor(), "Executor name does not match"),
+                        taskDto.getExecutor().getName(), "Executor name does not match"),
                 () -> assertEquals(task.getDescription(),
                         taskDto.getDescription(), "Description does not match")
         );
