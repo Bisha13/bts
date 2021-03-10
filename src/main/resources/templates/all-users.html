@@ -8,8 +8,12 @@
     <title>All Users</title>
 </head>
 <body>
-<ul th:each="user : ${usersAtr}">
-    <li th:text="'Id - ' + ${user.id}  + '| Name - ' + ${user.name}"></li>
-</ul>
+<div th:each="user : ${usersAtr}" >
+    <span th:text="'Id - ' + ${user.id}  + '| Name - ' + ${user.name}"></span>
+    <a th:href="@{/tasks/from-user/(userId=${user.id})}">Show all tasks</a>
+<!--    <form th:action="@{/tasks/from-user}" >-->
+<!--        <button type="submit" th:value="${user.id}" th:name="userId">Show all tasks</button>-->
+<!--    </form>-->
+</div>
 </body>
 </html>
