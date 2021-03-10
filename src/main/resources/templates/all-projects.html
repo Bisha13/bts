@@ -17,6 +17,9 @@
     <form th:action="@{/projects/update}" >
         <button type="submit" th:value="${project.id}" th:name="projectId">Update</button>
     </form>
+    <form th:action="@{/projects/delete}" >
+        <button type="submit" th:value="${project.id}" th:name="projectId" th:method="delete">Delete</button>
+    </form>
 </div>
 
 <form th:action="@{/projects/new}" method="get">

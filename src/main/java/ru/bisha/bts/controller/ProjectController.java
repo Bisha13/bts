@@ -59,4 +59,10 @@ public class ProjectController {
         projectService.save(project);
         return "redirect:/projects";
     }
+
+    @RequestMapping("/delete")
+    public String deleteProject(@RequestParam(value = "projectId") final int projectId) {
+        projectService.deleteById(projectId);
+        return "redirect:/projects";
+    }
 }
