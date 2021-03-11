@@ -13,4 +13,13 @@ public class UserDto {
 
     private String name;
 
+    private static final String SEP = "|";
+
+    @Override
+    public String toString() {
+        return "project" + SEP
+                +  id + SEP
+                + name;
+    }
+
 }
