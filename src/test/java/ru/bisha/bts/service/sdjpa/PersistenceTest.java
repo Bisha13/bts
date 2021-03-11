@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.bisha.bts.parser.FileParser;
+import ru.bisha.bts.service.parser.FileParserService;
 import ru.bisha.bts.repo.DbCleaner;
 
 @Tag("persistence")
@@ -17,12 +17,12 @@ public abstract class PersistenceTest {
     DbCleaner dbCLeaner;
 
     @Autowired
-    FileParser fileParser;
+    FileParserService fileParserService;
 
     @BeforeEach
     void before() {
         dbCLeaner.deleteAllData();
-        fileParser.parseFileToDd(TEST_CSV);
+        fileParserService.parseFileToDd(TEST_CSV);
     }
 
 }

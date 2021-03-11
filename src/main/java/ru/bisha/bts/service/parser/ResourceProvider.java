@@ -1,4 +1,4 @@
-package ru.bisha.bts.parser;
+package ru.bisha.bts.service.parser;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

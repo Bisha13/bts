@@ -5,23 +5,21 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.bisha.bts.model.entity.Project;
-import ru.bisha.bts.parser.FileParser;
+import ru.bisha.bts.service.parser.FileParserService;
 import ru.bisha.bts.repo.DbCleaner;
 import ru.bisha.bts.service.ProjectService;
 import ru.bisha.bts.service.UserService;
-
-import static org.junit.jupiter.api.Assertions.*;
+import ru.bisha.bts.service.save.CsvFileSaverService;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class CsvFileSaverTest {
+class CsvFileSaverServiceTest {
 
     public static final String OUT = "src/test/resources/testOut.csv";
     public static final String IN = "src/test/resources/test.csv";
 
     @Autowired
-    CsvFileSaver fileSaver;
+    CsvFileSaverService fileSaver;
 
     @Autowired
     ProjectService projectService;
@@ -30,7 +28,7 @@ class CsvFileSaverTest {
     UserService userService;
 
     @Autowired
-    FileParser fileParser;
+    FileParserService fileParserService;
 
     @Autowired
     DbCleaner dbCleaner;
@@ -39,7 +37,7 @@ class CsvFileSaverTest {
     @BeforeAll
     void beforeAll() {
         dbCleaner.deleteAllData();
-        fileParser.parseFileToDd(IN);
+        fileParserService.parseFileToDd(IN);
     }
 
     @Test

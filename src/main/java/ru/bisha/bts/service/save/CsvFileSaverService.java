@@ -1,4 +1,4 @@
-package ru.bisha.bts.saver;
+package ru.bisha.bts.service.save;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class CsvFileSaver implements FileSaver {
+public class CsvFileSaverService implements FileSaverService {
 
     @Autowired
     private UserService userService;

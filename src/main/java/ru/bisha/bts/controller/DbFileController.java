@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.bisha.bts.model.dto.ResourceDto;
-import ru.bisha.bts.parser.FileParser;
-import ru.bisha.bts.parser.ResourceProvider;
+import ru.bisha.bts.service.parser.FileParserService;
+import ru.bisha.bts.service.parser.ResourceProvider;
 import ru.bisha.bts.repo.DbCleaner;
 
 
@@ -22,7 +22,7 @@ public class DbFileController {
     private ResourceProvider resourceProvider;
 
     @Autowired
-    private FileParser fileParser;
+    private FileParserService fileParserService;
 
     @Autowired
     private DbCleaner dbCleaner;
@@ -39,7 +39,7 @@ public class DbFileController {
     public String loadFile(
             @ModelAttribute(value = "resourceDto") final ResourceDto resourceDto) {
         dbCleaner.deleteAllData();
-        fileParser.parseFileToDd(resourceDto.getResource());
+        fileParserService.parseFileToDd(resourceDto.getResource());
         return "index";
     }
 }

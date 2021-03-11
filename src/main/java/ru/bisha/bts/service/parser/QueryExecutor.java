@@ -1,4 +1,4 @@
-package ru.bisha.bts.parser;
+package ru.bisha.bts.service.parser;
 
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package ru.bisha.bts.parser;
+package ru.bisha.bts.service.parser;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * and via queryExecutor insert info to db.
  */
 @Component
-public final class CsvParserImpl implements FileParser {
+public final class CsvParserServiceImpl implements FileParserService {
 
     @Autowired
     private QueryExecutor queryExecutor;

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.bisha.bts.parser.FileParser;
+import ru.bisha.bts.service.parser.FileParserService;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
@@ -15,7 +15,7 @@ class DbCleanerTest {
     public static final String TEST_CSV = "src/test/resources/test.csv";
 
     @Autowired
-    FileParser fileParser;
+    FileParserService fileParserService;
 
     @Autowired
     DbCleaner dbCLeaner;
@@ -23,7 +23,7 @@ class DbCleanerTest {
 
     @BeforeEach
     void setUp() {
-        fileParser.parseFileToDd(TEST_CSV);
+        fileParserService.parseFileToDd(TEST_CSV);
     }
 
     @DisplayName("Test multiple cleaning of db")
