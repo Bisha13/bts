@@ -51,7 +51,7 @@ public class TaskController {
         User user = userService.findById(id);
         List<Task> tasks = user.getTasks();
         model.addAttribute("fromAtr", "user");
-        model.addAttribute("fromId", "Id");
+        model.addAttribute("fromId", id);
         model.addAttribute(TASKS_ATR, tasks);
         return ALL_TASKS;
     }
@@ -116,8 +116,8 @@ public class TaskController {
 
     @RequestMapping("/delete")
     public String deleteTask(@RequestParam(value = "taskId") final int taskId,
-                             @RequestParam(value = "fromAtr") final String from,
-                             @RequestParam(value = "fromId") final int fromId) {
+                             @RequestParam(value = "fromAtr", required = false) final String from,
+                             @RequestParam(value = "fromId", required = false) final int fromId) {
 
         taskService.deleteById(taskId);
         if (from.equals("project")) {

@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Index file</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
 </head>
 <body>
-<h1>Welcome to bts!</h1>
-
-<a href="/users">Users</a>
-<br>
-<br>
-<a href="/projects">Projects</a>
+<div class="container">
+    <h3 class="header">Welcome to bts!</h3>
+    <div class="side">
+        <a href="/users">Users</a>
+        <br>
+        <a href="/projects">Projects</a>
+        <br>
+        <a href="/file">Choose file</a>
+    </div>
+    <div class="main-content">
+    </div>
+</div>
 </body>
 </html>

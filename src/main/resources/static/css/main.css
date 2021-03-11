@@ -1,0 +1,26 @@
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 30px 1fr;
+    grid-template-columns: 100px 1fr;
+    grid-template-areas: "header header"
+                       "side content"
+                       "side content";
+}
+
+.header {
+    grid-area: header;
+    margin: 5px;
+}
+.side {
+    grid-area: side;
+}
+.main-content {
+    grid-area: content;
+}
+
+.ud-button {
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+}

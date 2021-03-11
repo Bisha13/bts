@@ -5,25 +5,39 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
     <title>All Projects</title>
 </head>
 <body>
+<div class="container">
+    <h4 class="header">All projects</h4>
+    <div class="side">
+        <a href="/users">Users</a>
+        <br>
+        <a href="/projects">Projects</a>
+        <br>
+        <a href="/file">Choose file</a>
+    </div>
+    <div class="main-content">
+        <div th:each="project : ${projectsAtr}">
 
-<div th:each="project : ${projectsAtr}">
+            <span th:text="'Id - ' + ${project.id}  + '| Name - ' + ${project.name}"></span>
+            <a th:href="@{/tasks/from-project/(projectId=${project.id})}">Show all tasks</a>
 
-    <span th:text="'Id - ' + ${project.id}  + '| Name - ' + ${project.name}"></span>
-    <a th:href="@{/tasks/from-project/(projectId=${project.id})}">Show all tasks</a>
+            <form th:action="@{/projects/update}" >
+                <button type="submit" class="ud-button" th:value="${project.id}" th:name="projectId">Update</button>
+            </form>
+            <form th:action="@{/projects/delete}" >
+                <button type="submit" class="ud-button" th:value="${project.id}" th:name="projectId" th:method="delete">Delete</button>
+            </form>
+            <br><br>
+        </div>
+        <br>
 
-    <form th:action="@{/projects/update}" >
-        <button type="submit" th:value="${project.id}" th:name="projectId">Update</button>
-    </form>
-    <form th:action="@{/projects/delete}" >
-        <button type="submit" th:value="${project.id}" th:name="projectId" th:method="delete">Delete</button>
-    </form>
+        <form th:action="@{/projects/new}" method="get">
+            <input type="submit" value="Add new">
+        </form>
+    </div>
 </div>
-
-<form th:action="@{/projects/new}" method="get">
-    <input type="submit" value="Add new">
-</form>
 </body>
 </html>

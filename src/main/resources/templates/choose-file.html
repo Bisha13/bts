@@ -8,8 +8,9 @@
     <title>Choose file</title>
 </head>
 <body>
-<h1>Choose file to load</h1>
-<form th:action="@{/loadFile}" th:object="${resourceDto}" method="post">
+<h3>Choose file to load</h3>
+<p>Here a some preloaded files. Feel free to choose some of these.</p>
+<form th:action="@{file/loadFile}" th:object="${resourceDto}" method="post">
     <select th:field="*{resource}">
         <option th:each="resource : ${resourcesAtr}"
                 th:text="${resource.getFilename()}"
@@ -18,5 +19,8 @@
     </select>
     <input type="submit" value="Load"/>
 </form>
+
+<p>Also you can load custom file to resources/data.
+    Formatting is very straightforward, just chek one of the test files.</p>
 </body>
 </html>

@@ -5,45 +5,59 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
     <title>Task info</title>
 </head>
 <body>
-<form th:action="@{/tasks}" method="post" th:object="${taskAtr}">
-    <input type="hidden" th:field="*{id}">
-    Theme
-    <input type="text" th:field="*{theme}"><br><br>
-    Project
-    <select th:field="*{project}">
-        <option th:each="project : ${projectsAtr}"
-                th:text="${project.name}"
-                th:value="${project.id}"
-        ></option>
-    </select><br><br>
-    Type
-    <select name="type">
-        <option th:each="type : ${T(ru.bisha.bts.model.entity.Task$Type).values()}"
-                th:value="${type}"
-                th:text="${type}"
-                th:selected="*{type}"></option>
-    </select><br><br>
-    Priority
-    <select name="Priority">
-        <option th:each="type : ${T(ru.bisha.bts.model.entity.Task$Priority).values()}"
-                th:value="${type}"
-                th:text="${type}"
-                th:selected="*{type}"></option>
-    </select><br><br>
-    Executor
-    <select th:field="*{executor}">
-        <option th:each="user : ${usersAtr}"
-                th:text="${user.name}"
-                th:value="${user.id}"
-        ></option>
-    </select><br><br>
-    Description
-    <textarea th:type="text" th:field="*{description}"></textarea>
-    <input type="submit" value="Save">
-</form>
-
+<div class="container">
+    <h3 class="header">Let's create new task.</h3>
+    <div class="side">
+        <a href="/users">Users</a>
+        <br>
+        <a href="/projects">Projects</a>
+        <br>
+        <a href="/file">Choose file</a>
+    </div>
+    <div class="main-content">
+        <form th:action="@{/tasks}" method="post" th:object="${taskAtr}">
+            <input type="hidden" th:field="*{id}">
+            Theme
+            <input type="text" th:field="*{theme}"><br><br>
+            Project
+            <select th:field="*{project}">
+                <option th:each="project : ${projectsAtr}"
+                        th:text="${project.name}"
+                        th:value="${project.id}"
+                ></option>
+            </select><br><br>
+            Type
+            <select name="type">
+                <option th:each="type : ${T(ru.bisha.bts.model.entity.Task$Type).values()}"
+                        th:value="${type}"
+                        th:text="${type}"
+                        th:selected="*{type}"></option>
+            </select><br><br>
+            Priority
+            <select name="Priority">
+                <option th:each="type : ${T(ru.bisha.bts.model.entity.Task$Priority).values()}"
+                        th:value="${type}"
+                        th:text="${type}"
+                        th:selected="*{type}"></option>
+            </select><br><br>
+            Executor
+            <select th:field="*{executor}">
+                <option th:each="user : ${usersAtr}"
+                        th:text="${user.name}"
+                        th:value="${user.id}"
+                ></option>
+            </select><br><br>
+            Description
+            <textarea th:type="text" th:field="*{description}"></textarea>
+            <br>
+            <br>
+            <input type="submit" value="Save">
+        </form>
+    </div>
+</div>
 </body>
 </html>
