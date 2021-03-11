@@ -1,8 +1,5 @@
 package ru.bisha.bts.controller;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +14,9 @@ import ru.bisha.bts.service.ProjectService;
 import ru.bisha.bts.service.TaskService;
 import ru.bisha.bts.service.UserService;
 import ru.bisha.bts.service.map.DtoMapService;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -47,19 +47,21 @@ public class TaskController {
     }
 
     @GetMapping("/from-user")
-    public String showTasksFromUser(@RequestParam(value = "userId")
-                                        final int id, final Model model) {
+    public String showTasksFromUser(@RequestParam(value = "userId") final int id, final Model model) {
         User user = userService.findById(id);
         List<Task> tasks = user.getTasks();
+        model.addAttribute("fromAtr", "user");
+        model.addAttribute("fromId", "Id");
         model.addAttribute(TASKS_ATR, tasks);
         return ALL_TASKS;
     }
 
     @GetMapping("/from-project")
-    public String showTasksFromProject(@RequestParam(value = "projectId")
-                                           final int id, final Model model) {
+    public String showTasksFromProject(@RequestParam(value = "projectId") final int id, final Model model) {
         Project project = projectService.findById(id);
         List<Task> tasks = project.getTasks();
+        model.addAttribute("fromAtr", "project");
+        model.addAttribute("fromId", id);
         model.addAttribute(TASKS_ATR, tasks);
         return ALL_TASKS;
     }
@@ -113,8 +115,18 @@ public class TaskController {
     }
 
     @RequestMapping("/delete")
-    public String deleteTask(@RequestParam(value = "taskId") final int taskId) {
+    public String deleteTask(@RequestParam(value = "taskId") final int taskId,
+                             @RequestParam(value = "fromAtr") final String from,
+                             @RequestParam(value = "fromId") final int fromId) {
+
         taskService.deleteById(taskId);
-        return "redirect:/tasks";//todo redirect to tasks of specific user
+        if (from.equals("project")) {
+            return "redirect:/tasks/from-project/?projectId=" + fromId;
+        }
+        if (from.equals("user")) {
+            return "redirect:/tasks/from-user/?userId=" + fromId;
+        }
+
+        return "redirect:/tasks";
     }
 }
