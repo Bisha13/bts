@@ -12,10 +12,11 @@ import ru.bisha.bts.model.dto.ResourceDto;
 import ru.bisha.bts.service.parser.FileParserService;
 import ru.bisha.bts.service.parser.ResourceProvider;
 import ru.bisha.bts.repo.DbCleaner;
+import ru.bisha.bts.service.save.FileSaverService;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/file")
 public class DbFileController {
 
     @Autowired
@@ -26,6 +27,9 @@ public class DbFileController {
 
     @Autowired
     private DbCleaner dbCleaner;
+
+    @Autowired
+    private FileSaverService fileSaver;
 
     @GetMapping
     public String chooseFile(final Model model) {
@@ -40,6 +44,16 @@ public class DbFileController {
             @ModelAttribute(value = "resourceDto") final ResourceDto resourceDto) {
         dbCleaner.deleteAllData();
         fileParserService.parseFileToDd(resourceDto.getResource());
-        return "index";
+        return "home";
+    }
+
+    @PostMapping("/savFile")
+    public String saveFile(
+            @ModelAttribute(value = "resourceDto") final ResourceDto resourceDto) {
+        String resource = resourceDto.getResource();
+        fileSaver.saveFileFromDb(resource);
+        dbCleaner.deleteAllData();
+        fileParserService.parseFileToDd(resource);
+        return "home";
     }
 }
