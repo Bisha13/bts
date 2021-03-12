@@ -7,7 +7,4 @@ public class ResourceDto {
 
     private String resource;
 
-    public String getResource() {
-        return "src/main/resources/data/" + resource;
-    }
 }

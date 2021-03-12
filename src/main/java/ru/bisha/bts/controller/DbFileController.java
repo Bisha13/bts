@@ -1,6 +1,7 @@
 package ru.bisha.bts.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,8 @@ import ru.bisha.bts.service.parser.FileParserService;
 import ru.bisha.bts.service.parser.ResourceProvider;
 import ru.bisha.bts.repo.DbCleaner;
 import ru.bisha.bts.service.save.FileSaverService;
+
+import java.util.List;
 
 
 @Controller
@@ -31,6 +34,8 @@ public class DbFileController {
     @Autowired
     private FileSaverService fileSaver;
 
+    public static final String RESOURCE_PREFIX = "src/main/resources/data/";
+
     @GetMapping
     public String chooseFile(final Model model) {
         Resource[] resources = resourceProvider.getResources();
@@ -43,17 +48,24 @@ public class DbFileController {
     public String loadFile(
             @ModelAttribute(value = "resourceDto") final ResourceDto resourceDto) {
         dbCleaner.deleteAllData();
-        fileParserService.parseFileToDd(resourceDto.getResource());
+        fileParserService.parseFileToDd(RESOURCE_PREFIX + resourceDto.getResource());
         return "home";
     }
 
-    @PostMapping("/savFile")
+    @GetMapping("/saveFile")
+    public String chooseFileToSave(final Model model) {
+        model.addAttribute("resourceDto", new ResourceDto());
+        return "save-file";
+    }
+
+    @PostMapping("/saveFile/save")
     public String saveFile(
             @ModelAttribute(value = "resourceDto") final ResourceDto resourceDto) {
-        String resource = resourceDto.getResource();
+        String resource = RESOURCE_PREFIX + resourceDto.getResource();
+        resourceProvider.addResource(resource);
         fileSaver.saveFileFromDb(resource);
         dbCleaner.deleteAllData();
         fileParserService.parseFileToDd(resource);
-        return "home";
+        return "redirect:/index";
     }
 }
