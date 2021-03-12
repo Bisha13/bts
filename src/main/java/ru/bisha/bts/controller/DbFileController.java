@@ -46,7 +46,8 @@ public class DbFileController {
     public String loadFile(@ModelAttribute(value = "resourceDto")
                                final ResourceDto resourceDto) {
         dbCleaner.deleteAllData();
-        fileParserService.parseFileToDd(RESOURCE_PREFIX + resourceDto.getResource());
+        fileParserService.parseFileToDd(RESOURCE_PREFIX
+                + resourceDto.getResource());
         this.resourceDto = resourceDto;
         return "home";
     }
