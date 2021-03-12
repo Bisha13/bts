@@ -34,9 +34,9 @@ class UserSDJpaSDJpaServiceTest extends PersistenceTest {
         int size = userBefore.size();
 
         Set<String> expected = new HashSet<>();
-        expected.add("1|Ivan");
-        expected.add("2|Darya");
-        expected.add("3|Igor");
+        expected.add("1|Ivan-test");
+        expected.add("2|Darya-test");
+        expected.add("3|Igor-test");
 
         Set<String> actual = userBefore
                 .stream()

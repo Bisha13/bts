@@ -16,6 +16,7 @@ import ru.bisha.bts.repo.DbCleaner;
 import ru.bisha.bts.service.save.FileSaverService;
 
 import java.util.List;
+import java.util.Set;
 
 
 @Controller
@@ -40,7 +41,7 @@ public class DbFileController {
 
     @GetMapping
     public String chooseFile(final Model model) {
-        Resource[] resources = resourceProvider.getResources();
+        Set<Resource> resources = Set.of(resourceProvider.getResources());
         model.addAttribute("resourcesAtr", resources);
         model.addAttribute("resourceDto", new ResourceDto());
         return "choose-file";

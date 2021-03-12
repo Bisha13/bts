@@ -15,6 +15,10 @@ public class ResourceProvider {
     private Resource[] resources;
 
     public void addResource(String resource) {
+        for (Resource res : resources) {
+            if(res.getFilename().equals(resource)) return;
+        }
+
         resources = Arrays.copyOf(resources, resources.length + 1);
         resources[resources.length - 1] = new FileSystemResource(resource.toLowerCase());
     }
