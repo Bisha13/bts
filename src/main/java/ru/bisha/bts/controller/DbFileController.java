@@ -36,6 +36,8 @@ public class DbFileController {
 
     public static final String RESOURCE_PREFIX = "src/main/resources/data/";
 
+    private ResourceDto resourceDto;
+
     @GetMapping
     public String chooseFile(final Model model) {
         Resource[] resources = resourceProvider.getResources();
@@ -49,12 +51,13 @@ public class DbFileController {
             @ModelAttribute(value = "resourceDto") final ResourceDto resourceDto) {
         dbCleaner.deleteAllData();
         fileParserService.parseFileToDd(RESOURCE_PREFIX + resourceDto.getResource());
+        this.resourceDto = resourceDto;
         return "home";
     }
 
     @GetMapping("/saveFile")
     public String chooseFileToSave(final Model model) {
-        model.addAttribute("resourceDto", new ResourceDto());
+        model.addAttribute("resourceDto", resourceDto);
         return "save-file";
     }
 
