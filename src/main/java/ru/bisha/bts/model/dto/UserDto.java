@@ -17,7 +17,7 @@ public class UserDto {
 
     @Override
     public String toString() {
-        return "project" + SEP
+        return "user" + SEP
                 +  id + SEP
                 + name;
     }
