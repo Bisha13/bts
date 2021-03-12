@@ -1,0 +1,14 @@
+user|1|Frodo
+user|2|Sam
+user|3|Gandalf
+user|4|Sauron
+project|1|Save middle-earth
+project|2|Destroy the ring.
+project|3|Destroy middle-earth
+task|1|Be mysterious. |1|BUG|MEDIUM|3|Be wise and don't tell anyone anything.
+task|2|Fly on eagles.|1|BUG|MEDIUM|3|Weeeeeeeeeee!!!
+task|3|Get the ring|1|TASK|HIGH|4|Get the ring ASAP!
+task|4|Rule them all|1|ISSUE|LOW|4|Rule the earth for eternity. 
+task|5|Get ring to the Mountain Doom. |2|ISSUE|HIGH|1|Get this shiny ring to Mordor.
+task|6|Throw ring to the volcano|2|ISSUE|HIGH|1|Dont keep it to yourself. Very importatn!
+task|7|Help Frodo.|2|ISSUE|HIGH|2|Help this hobbit throw that ring into vulcano. Bite of his finger if needed. 

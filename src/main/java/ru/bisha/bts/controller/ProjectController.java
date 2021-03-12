@@ -40,7 +40,8 @@ public class ProjectController {
     }
 
     @GetMapping("/update")
-    public String updateUser(@RequestParam(value = "projectId") final int projectId, final Model model) {
+    public String updateUser(@RequestParam(value = "projectId")
+                                 final int projectId, final Model model) {
         Project project = projectService.findById(projectId);
         ProjectDto projectDto = dtoMapService.mapToDto(project);
         model.addAttribute("projectAtr", projectDto);

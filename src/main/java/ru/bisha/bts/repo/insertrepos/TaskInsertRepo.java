@@ -1,10 +1,9 @@
 package ru.bisha.bts.repo.insertrepos;
 
-import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class TaskInsertRepo {
@@ -13,14 +12,14 @@ public class TaskInsertRepo {
 
     @Transactional
     public void insertWithQuery(final String[] parsedLine) {
-        entityManager.createNativeQuery("INSERT INTO tasks (" +
+        entityManager.createNativeQuery("INSERT INTO tasks ("
                 //"id, " +
-                "theme, " +
-                "project_id, " +
-                "type, " +
-                "priority, " +
-                "executor_id, " +
-                "description) VALUES (?,?,?,?,?,?)")
+                + "theme, "
+                + "project_id, "
+                + "type, "
+                + "priority, "
+                + "executor_id, "
+                + "description) VALUES (?,?,?,?,?,?)")
                 .setParameter(1, parsedLine[2])
                 .setParameter(2, parsedLine[3])
                 .setParameter(3, parsedLine[4])

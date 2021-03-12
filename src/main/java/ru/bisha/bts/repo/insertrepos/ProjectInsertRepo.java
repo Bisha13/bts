@@ -1,10 +1,9 @@
 package ru.bisha.bts.repo.insertrepos;
 
-import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class ProjectInsertRepo {

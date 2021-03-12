@@ -24,9 +24,9 @@ public class TaskDto {
 
     private static final String SEP = "|";
 
-    public TaskDto(int id, String theme,
-                   int project, Task.Type type, Task.Priority priority,
-                   int executor, String description) {
+    public TaskDto(final int id, final String theme,
+                   final int project, final Task.Type type, final Task.Priority priority,
+                   final int executor, final String description) {
         this.id = id;
         this.theme = theme;
         this.project = project;

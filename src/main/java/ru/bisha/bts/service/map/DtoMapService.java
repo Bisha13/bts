@@ -20,15 +20,15 @@ public class DtoMapService {
     @Autowired
     private UserService userService;
 
-    public UserDto mapToDto(User user) {
+    public UserDto mapToDto(final User user) {
         return new UserDto(user.getId(), user.getName());
     }
 
-    public ProjectDto mapToDto(Project project) {
+    public ProjectDto mapToDto(final Project project) {
         return new ProjectDto(project.getId(), project.getName());
     }
 
-    public TaskDto mapToDto(Task task) {
+    public TaskDto mapToDto(final Task task) {
         return new TaskDto(
                 task.getId(),
                 task.getTheme(),
@@ -40,7 +40,7 @@ public class DtoMapService {
                 );
     }
 
-    public Task mapToEntity(TaskDto taskDto) {
+    public Task mapToEntity(final TaskDto taskDto) {
         return new Task(taskDto.getId(),
                 taskDto.getTheme(),
                 projectService.findById(taskDto.getProject()),

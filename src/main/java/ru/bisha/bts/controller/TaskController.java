@@ -1,9 +1,15 @@
 package ru.bisha.bts.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.bisha.bts.model.dto.ProjectDto;
 import ru.bisha.bts.model.dto.TaskDto;
 import ru.bisha.bts.model.dto.UserDto;
@@ -14,10 +20,6 @@ import ru.bisha.bts.service.ProjectService;
 import ru.bisha.bts.service.TaskService;
 import ru.bisha.bts.service.UserService;
 import ru.bisha.bts.service.map.DtoMapService;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
 
 @Controller
 @RequestMapping("/tasks")
@@ -47,7 +49,8 @@ public class TaskController {
     }
 
     @GetMapping("/from-user")
-    public String showTasksFromUser(@RequestParam(value = "userId") final int id, final Model model) {
+    public String showTasksFromUser(@RequestParam(value = "userId")
+                                        final int id, final Model model) {
         User user = userService.findById(id);
         List<Task> tasks = user.getTasks();
         model.addAttribute("fromAtr", "user");
@@ -57,7 +60,8 @@ public class TaskController {
     }
 
     @GetMapping("/from-project")
-    public String showTasksFromProject(@RequestParam(value = "projectId") final int id, final Model model) {
+    public String showTasksFromProject(@RequestParam(value = "projectId")
+                                           final int id, final Model model) {
         Project project = projectService.findById(id);
         List<Task> tasks = project.getTasks();
         model.addAttribute("fromAtr", "project");

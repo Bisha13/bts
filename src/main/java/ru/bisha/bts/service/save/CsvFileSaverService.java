@@ -1,5 +1,11 @@
 package ru.bisha.bts.service.save;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.bisha.bts.model.dto.ProjectDto;
@@ -10,12 +16,6 @@ import ru.bisha.bts.service.TaskService;
 import ru.bisha.bts.service.UserService;
 import ru.bisha.bts.service.map.DtoMapService;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class CsvFileSaverService implements FileSaverService {
@@ -39,7 +39,7 @@ public class CsvFileSaverService implements FileSaverService {
     private List<TaskDto> taskDtoList;
 
     @Override
-    public void saveFileFromDb(String file) {
+    public void saveFileFromDb(final String file) {
         initUserList();
         initProjectList();
         initTaskList();
@@ -75,7 +75,7 @@ public class CsvFileSaverService implements FileSaverService {
         writeToFile(file, changedAfterProject);
     }
 
-    private void writeToFile(String file, List<TaskDto> changedAfterProject) {
+    private void writeToFile(final String file, final List<TaskDto> changedAfterProject) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             for (UserDto userDto : userDtoList) {
                 writer.write(userDto.toString());
@@ -121,8 +121,9 @@ public class CsvFileSaverService implements FileSaverService {
                 .collect(Collectors.toList());
     }
 
-    private void changeProjectAndAddToChangedList(List<TaskDto> changedAfterUser,
-                                                  List<TaskDto> changedAfterProject, int i, int projectId) {
+    private void changeProjectAndAddToChangedList(final List<TaskDto> changedAfterUser,
+                                                  final List<TaskDto> changedAfterProject,
+                                                  final int i, final int projectId) {
         for (int pi = 0; pi < changedAfterUser.size(); pi++) {
             TaskDto taskDto = changedAfterUser.get(pi);
             if (taskDto == null) {
@@ -137,7 +138,8 @@ public class CsvFileSaverService implements FileSaverService {
     }
 
 
-    private void changeExecutorAndAddToChangedList(List<TaskDto> changedAfterUser, int i, int userId) {
+    private void changeExecutorAndAddToChangedList(final List<TaskDto> changedAfterUser,
+                                                   final int i, final int userId) {
         for (int ti = 0; ti < taskDtoList.size(); ti++) {
 
             TaskDto taskDto = taskDtoList.get(ti);

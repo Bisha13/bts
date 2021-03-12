@@ -2,12 +2,13 @@ package ru.bisha.bts.service.sdjpa;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.bisha.bts.model.entity.Project;
 import ru.bisha.bts.repo.ProjectRepo;
 import ru.bisha.bts.service.ProjectService;
-import javax.transaction.Transactional;
+
 
 @Service
 public class ProjectSDJpaService implements ProjectService {
@@ -24,22 +25,22 @@ public class ProjectSDJpaService implements ProjectService {
 
     @Transactional
     @Override
-    public Project findById(Integer id) {
+    public Project findById(final Integer id) {
         return projectRepo.findById(id).orElse(null);
     }
 
     @Override
-    public Project save(Project object) {
+    public Project save(final Project object) {
         return projectRepo.save(object);
     }
 
     @Override
-    public void delete(Project object) {
+    public void delete(final Project object) {
         projectRepo.delete(object);
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(final Integer id) {
         projectRepo.deleteById(id);
     }
 }

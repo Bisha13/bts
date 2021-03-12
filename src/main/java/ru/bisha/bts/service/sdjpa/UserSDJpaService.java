@@ -23,22 +23,22 @@ public class UserSDJpaService implements UserService {
     }
 
     @Override
-    public User findById(Integer id) {
+    public User findById(final Integer id) {
         return userRepo.findById(id).orElse(null);
     }
 
     @Override
-    public User save(User object) {
+    public User save(final User object) {
         return userRepo.save(object);
     }
 
     @Override
-    public void delete(User object) {
+    public void delete(final User object) {
         userRepo.delete(object);
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(final Integer id) {
         userRepo.deleteById(id);
     }
 }
