@@ -14,12 +14,21 @@ public class ResourceProvider {
     @Value("classpath:data/*.csv")
     private Resource[] resources;
 
-    public void addResource(String resource) {
+    public void addResource(final String resource) {
+        boolean contains = false;
         for (Resource res : resources) {
-            if(res.getFilename().equals(resource)) return;
+            if (res == null) {
+                continue;
+            } //todo make it nice please!
+            if (res.getFilename().equals(resource)) {
+                contains = true;
+            }
         }
 
-        resources = Arrays.copyOf(resources, resources.length + 1);
-        resources[resources.length - 1] = new FileSystemResource(resource.toLowerCase());
+        if (!contains) {
+            resources = Arrays.copyOf(resources, resources.length + 1);
+            resources[resources.length - 1] =
+                    new FileSystemResource(resource.toLowerCase());
+        }
     }
 }
