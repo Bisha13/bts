@@ -1,0 +1,7 @@
+user|1|Darya-test
+user|2|Igor-test
+project|1|calculator
+project|2|XO
+task|1|equals is not equals|1|BUG|HIGH|1|Button equals is not working when i dont press it, is it normal?
+task|2|Make multiplayer|2|TASK|MEDIUM|2|It's time to implement multiplayer. Do it!
+task|3|Make AI|2|TASK|MEDIUM|2|Implement AI for XO game.
