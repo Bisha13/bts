@@ -1,24 +1,31 @@
 package ru.bisha.bts.service.parser;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
-
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("ResourceProvider Test")
-@SpringBootTest
+@SpringJUnitConfig(classes = ResourceProviderTest.TestConfig.class)
 class ResourceProviderTest {
 
     @Autowired
     ResourceProvider resourceProvider;
+
+    @Configuration
+    static class TestConfig {
+
+        @Bean
+        ResourceProvider resourceProvider() {
+            return new ResourceProvider();
+        }
+    }
 
     @DisplayName("Test resources data contains both test files.")
     @Test
