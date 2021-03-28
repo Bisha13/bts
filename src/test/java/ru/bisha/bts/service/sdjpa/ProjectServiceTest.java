@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Project persistence test")
-class ProjectSDJpaServiceTest extends PersistenceTest {
+class ProjectServiceTest extends PersistenceTest {
 
     @Autowired
     ProjectSDJpaService projectService;

@@ -1,24 +1,20 @@
 package ru.bisha.bts.service.sdjpa;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.bisha.bts.model.entity.Task;
 import ru.bisha.bts.model.entity.User;
-
 import javax.transaction.Transactional;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import static org.junit.jupiter.api.Assertions.*;
 
-@Slf4j
-class UserSDJpaSDJpaServiceTest extends PersistenceTest {
+@DisplayName("User persistence test")
+class UserServiceTest extends PersistenceTest {
 
     @Autowired
     UserSDJpaService userService;

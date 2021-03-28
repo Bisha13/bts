@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Task persistence test")
-class TaskSDJpaServiceTest extends PersistenceTest {
+class TaskServiceTest extends PersistenceTest {
 
     @Autowired
     TaskSDJpaService taskService;
